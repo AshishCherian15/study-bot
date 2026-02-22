@@ -8,6 +8,16 @@ An AI chatbot that answers academic questions and remembers previous conversatio
 - **MongoDB Atlas** — Cloud database for chat history
 - **Render** — Deployment platform
 
+## 📁 Project Structure
+
+study-bot/
+│
+├── app.py
+├── requirements.txt
+├── runtime.txt
+├── README.md
+└── .gitignore
+
 ## How to Run Locally
 
 ```bash
