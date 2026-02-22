@@ -103,3 +103,10 @@ POST	/chat	Send message to chatbot
 GET	/history/{session_id}	Retrieve chat history
 DELETE	/history/{session_id}	Clear chat history
 
+| Method | Endpoint                | Description           |
+| ------ | ----------------------- | --------------------- |
+| GET    | `/`                     | Health check          |
+| POST   | `/chat`                 | Send message to bot   |
+| GET    | `/history/{session_id}` | Retrieve chat history |
+| DELETE | `/history/{session_id}` | Clear history         |
+
