@@ -86,6 +86,7 @@ pip install -r requirements.txt
 4️⃣ Create a .env file and add:
 
 GROQ_API_KEY=your_key_here
+
 MONGO_URI=your_mongo_uri_here
 
 5️⃣ Run the server
