@@ -1,8 +1,8 @@
-fastapi
-uvicorn
-pymongo
-langchain
-langchain-groq
-langchain-core
-python-dotenv
-pydantic
+fastapi==0.111.0
+uvicorn==0.30.1
+pymongo==4.7.3
+langchain==0.2.5
+langchain-groq==0.1.6
+langchain-core==0.2.10
+python-dotenv==1.0.1
+pydantic==2.7.4
