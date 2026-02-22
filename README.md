@@ -48,6 +48,7 @@ This project demonstrates:
 study-bot/
 
 │
+
 ├── app.py
 
 ├── requirements.txt
