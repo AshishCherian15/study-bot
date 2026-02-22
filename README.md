@@ -49,13 +49,21 @@ study-bot/
 
 │
 ├── app.py
+
 ├── requirements.txt
+
 ├── runtime.txt
+
 ├── README.md
+
 ├── .gitignore
+
 └── screenshots/
+
 ├── swagger.png
+
 ├── chat-response.png
+
 └── mongodb-history.png
 
 
