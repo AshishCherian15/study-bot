@@ -46,6 +46,7 @@ This project demonstrates:
 
 ## 📁 Project Structure
 study-bot/
+
 │
 ├── app.py
 ├── requirements.txt
@@ -59,9 +60,8 @@ study-bot/
 
 
 ---
-1️⃣ Clone the repository
 
-```bash
+1️⃣ Clone the repository
 git clone https://github.com/AshishCherian15/study-bot.git
 cd study-bot
 
