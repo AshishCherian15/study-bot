@@ -147,7 +147,7 @@ Shows how the chatbot responds to user queries with contextual answers.
 Demonstrates MongoDB-backed session memory where previous conversations
 are retrieved.
 
-![Chat History](screenshots/History.png)
+![Chat History](screenshots/History .png)
 
 ------------------------------------------------------------------------
 
