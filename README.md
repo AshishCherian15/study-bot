@@ -110,12 +110,6 @@ uvicorn app:app --reload --host 127.0.0.1 --port 8000
 ```
 
 ## 📸 Screenshots
-- Swagger UI
-  - ![Swagger UI](screenshots/Study%20Bot%20UI.png)
-- Chat Response
-  - ![Chat Response](screenshots/Response.png)
-- Stored History
-  - ![Chat History](screenshots/History.png)
 - New Frontend UI (add your latest screenshot as `screenshots/new-ui.png`)
   - `![New UI](screenshots/new-ui.png)`
 
