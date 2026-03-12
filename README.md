@@ -34,15 +34,12 @@ study-bot/
 ├── runtime.txt
 ├── gitignore
 ├── README.md
-├── .env.example
 ├── frontend/
 │   ├── index.html
 │   ├── styles.css
 │   └── app.js
 └── screenshots/
-    ├── Study Bot UI.png
-    ├── Response.png
-    └── History.png
+  └── image.png
 ```
 
 ## ⚙️ Local Setup
@@ -110,8 +107,9 @@ uvicorn app:app --reload --host 127.0.0.1 --port 8000
 ```
 
 ## 📸 Screenshots
-- New Frontend UI (add your latest screenshot as `screenshots/new-ui.png`)
-  - `![New UI](screenshots/new-ui.png)`
+- New Frontend UI
+
+![New UI](screenshots/image.png)
 
 ## 🔐 Security Notes
 - Never commit real API keys
