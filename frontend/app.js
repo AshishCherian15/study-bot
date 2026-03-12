@@ -203,7 +203,9 @@ closeHistoryBtn.addEventListener("click", () => {
 envLocalBtn.addEventListener("click", () => setEnvironment("local"));
 envProdBtn.addEventListener("click", () => setEnvironment("prod"));
 
-const savedMode = localStorage.getItem("study_bot_mode") || "local";
+const isLocalHost = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+const defaultMode = isLocalHost ? "local" : "prod";
+const savedMode = localStorage.getItem("study_bot_mode") || defaultMode;
 const savedSession = localStorage.getItem("study_bot_session");
 const savedApi = localStorage.getItem("study_bot_api_url");
 
