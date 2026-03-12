@@ -1,175 +1,128 @@
-# 📚 Study Bot --- AI Powered Study Assistant
+# 📚 Study Bot — AI Study Assistant
 
-An AI-powered chatbot API that answers study-related questions and
-maintains conversation memory using MongoDB.
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-API-green)
+![Frontend](https://img.shields.io/badge/Frontend-Vercel-black)
+![Backend](https://img.shields.io/badge/Backend-Render-purple)
+![Database](https://img.shields.io/badge/Database-MongoDB-green)
 
-🔗 **Live API Documentation:**\
-https://study-bot-bs6x.onrender.com/docs
+An AI-powered Study Assistant that answers academic questions and remembers conversation history by session.
 
-------------------------------------------------------------------------
+## 🔗 Live Links
+- Frontend: https://study-bot-seven.vercel.app/
+- Backend Docs: https://study-bot-bs6x.onrender.com/docs
 
-## 🚀 Project Overview
+## ✨ Features
+- AI answers for study topics (Maths, Science, History, English, Programming)
+- Session-based chat memory with MongoDB Atlas
+- Modern chat UI with Local/Production mode switch
+- View previous history by session ID
+- Clear chat conversation instantly
+- FastAPI backend with Swagger docs
 
-Study Bot is a REST API built using **FastAPI** that integrates a Large
-Language Model (LLM) via **LangChain + Groq**.\
-It stores conversation history in **MongoDB Atlas** to provide
-context-aware responses across sessions.
-
-This project demonstrates:
-
--   LLM API integration
--   Context-aware memory handling
--   RESTful API architecture
--   Cloud deployment on Render
-
-------------------------------------------------------------------------
-
-## ✨ Key Features
-
--   🤖 AI-powered academic chatbot
--   🧠 Session-based memory using MongoDB
--   📡 REST API endpoints
--   🔄 Retrieve & delete chat history
--   ☁️ Publicly deployed and accessible
-
-------------------------------------------------------------------------
-
-## 🛠 Tech Stack
-
-  Category          Technology
-  ----------------- ------------------
-  Language          Python 3.11
-  Framework         FastAPI
-  Server            Uvicorn
-  LLM Integration   LangChain + Groq
-  Database          MongoDB Atlas
-  Deployment        Render
-
-------------------------------------------------------------------------
+## 🧱 Architecture
+- **Frontend:** Static web app (`frontend/`) deployed on Vercel
+- **Backend:** FastAPI API (`app.py`) deployed on Render
+- **LLM:** Groq (LLaMA 3.3 70B)
+- **Database:** MongoDB Atlas
 
 ## 📁 Project Structure
+```
+study-bot/
+├── app.py
+├── requirements.txt
+├── runtime.txt
+├── gitignore
+├── README.md
+├── .env.example
+├── frontend/
+│   ├── index.html
+│   ├── styles.css
+│   └── app.js
+└── screenshots/
+    ├── Study Bot UI.png
+    ├── Response.png
+    └── History.png
+```
 
-    study-bot/
-    │
-    ├── app.py
-    ├── requirements.txt
-    ├── runtime.txt
-    ├── README.md
-    ├── .gitignore
-    └── screenshots/
-        ├── Study Bot UI.png
-        ├── Response.png
-        └── History.png
-
-------------------------------------------------------------------------
-
-## ⚙️ How To Run Locally
-
-1️⃣ Clone the repository
-
-``` bash
+## ⚙️ Local Setup
+1. Clone repo
+```bash
 git clone https://github.com/AshishCherian15/study-bot.git
 cd study-bot
 ```
 
-2️⃣ Create virtual environment
-
-``` bash
+2. Create and activate env
+```bash
 python -m venv venv
-venv\Scripts\activate   # Windows
+venv\Scripts\activate
 ```
 
-3️⃣ Install dependencies
-
-``` bash
+3. Install dependencies
+```bash
 pip install -r requirements.txt
 ```
 
-4️⃣ Create a `.env` file and add:
-
-    GROQ_API_KEY=your_groq_api_key
-    MONGO_URI=your_mongodb_connection_string
-
-5️⃣ Start the server
-
-``` bash
-uvicorn app:app --reload
+4. Create `.env` (or `env`) file
+```env
+GROQ_API_KEY=your_groq_api_key
+MONGO_URI=your_mongodb_connection_string
+FRONTEND_ORIGINS=http://127.0.0.1:5500
 ```
 
-Open in browser: http://localhost:8000/docs
+5. Start backend
+```bash
+uvicorn app:app --reload --host 127.0.0.1 --port 8000
+```
 
-------------------------------------------------------------------------
+6. Open frontend
+- Open `frontend/index.html` via VS Code Live Server (e.g., `127.0.0.1:5500`)
+- Keep Environment = `Local` in sidebar
+
+## 🚀 Deployment
+
+### Vercel (Frontend)
+- Import repository in Vercel
+- Set **Root Directory** = `frontend`
+- Framework = `Other`
+- Deploy
+
+### Render (Backend)
+- Build command: `pip install -r requirements.txt`
+- Start command: `uvicorn app:app --host 0.0.0.0 --port $PORT`
+- Required env vars:
+  - `GROQ_API_KEY`
+  - `MONGO_URI`
+  - `FRONTEND_ORIGINS=https://study-bot-seven.vercel.app`
 
 ## 📡 API Endpoints
+- `GET /` — Health check
+- `POST /chat` — Send message to Study Bot
+- `GET /history/{session_id}` — Get session history
+- `DELETE /history/{session_id}` — Clear session history
 
-  Method   Endpoint                  Description
-  -------- ------------------------- -------------------------
-  GET      `/`                       Health check
-  POST     `/chat`                   Send message to chatbot
-  GET      `/history/{session_id}`   Retrieve chat history
-  DELETE   `/history/{session_id}`   Clear chat history
-
-------------------------------------------------------------------------
-
-## 🧪 Example API Request
-
-``` json
-POST /chat
+## 🧪 Example Request
+```json
 {
   "session_id": "student123",
   "message": "Explain Newton's second law"
 }
 ```
 
-------------------------------------------------------------------------
+## 📸 Screenshots
+- Swagger UI
+  - ![Swagger UI](screenshots/Study%20Bot%20UI.png)
+- Chat Response
+  - ![Chat Response](screenshots/Response.png)
+- Stored History
+  - ![Chat History](screenshots/History.png)
+- New Frontend UI (add your latest screenshot as `screenshots/new-ui.png`)
+  - `![New UI](screenshots/new-ui.png)`
 
-# 📸 Screenshots
-
-## 1️⃣ API Documentation Interface (Swagger UI)
-
-Displays all available endpoints including `/chat`, `/history`, and root
-health check.
-
-![Swagger UI](screenshots/Study%20Bot%20UI.png)
-
-------------------------------------------------------------------------
-
-## 2️⃣ Chat Response Example
-
-Shows how the chatbot responds to user queries with contextual answers.
-
-![Chat Response](screenshots/Response.png)
-
-------------------------------------------------------------------------
-
-## 3️⃣ Stored Chat History
-
-Demonstrates MongoDB-backed session memory where previous conversations
-are retrieved.
-
-![Chat History](screenshots/History.png)
-
-------------------------------------------------------------------------
-
-## 🔐 Environment Variables
-
-The following environment variables are required:
-
-    GROQ_API_KEY
-    MONGO_URI
-
-⚠️ Do NOT commit your `.env` file to GitHub.
-
-------------------------------------------------------------------------
-
-## 📌 Notes
-
--   MongoDB Atlas must allow network access.
--   Ensure environment variables are set in Render.
--   API documentation available at `/docs`.
-
-------------------------------------------------------------------------
+## 🔐 Security Notes
+- Never commit real API keys
+- Rotate keys immediately if leaked
+- Keep local secrets only in `.env` / `env`
 
 ## 📄 License
-
-This project is for educational and demonstration purposes.
+Educational and demonstration use.

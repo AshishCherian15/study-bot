@@ -1,7 +1,12 @@
 .env
+env
 __pycache__/
 *.pyc
 *.pyo
 venv/
 .venv/
 .DS_Store
+
+# local media/docs (keep project clean)
+*.pdf
+*.docx
