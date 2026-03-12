@@ -1,15 +1,46 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from pymongo import MongoClient
 from langchain_groq import ChatGroq
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 from datetime import datetime
+from dotenv import load_dotenv
+import os
 
 app = FastAPI(title="Study Bot API", description="AI Study Assistant with Memory")
 
+load_dotenv()
+if not os.getenv("GROQ_API_KEY") or not os.getenv("MONGO_URI"):
+    load_dotenv("env")
+
 # ── Credentials ───────────────────────────────────────────────────────────────
-GROQ_API_KEY = "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"
-MONGO_URI = "mongodb+srv://ashstarfall01_db_user:MA3l1wq3YEkJJ1cO@cluster0.m36wsbl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+MONGO_URI = os.getenv("MONGO_URI")
+
+if not GROQ_API_KEY or not MONGO_URI:
+    raise RuntimeError("Missing required environment variables: GROQ_API_KEY and MONGO_URI")
+
+frontend_origins_raw = os.getenv("FRONTEND_ORIGINS", "")
+allowed_origins = [origin.strip() for origin in frontend_origins_raw.split(",") if origin.strip()]
+
+if not allowed_origins:
+    allowed_origins = [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:5500",
+        "http://127.0.0.1:5500",
+    ]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=allowed_origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # MongoDB Setup
 client = MongoClient(MONGO_URI)

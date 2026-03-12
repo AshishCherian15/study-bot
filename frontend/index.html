@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study Bot — AI Study Assistant</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <span class="brand-icon">📚</span>
+          <div>
+            <p class="brand-name">Study Bot</p>
+            <p class="brand-sub">AI Study Assistant</p>
+          </div>
+        </div>
+        <div class="sidebar-section">
+          <p class="sidebar-label">Environment</p>
+          <div class="env-toggle">
+            <button id="envLocal" class="env-btn active" type="button">Local</button>
+            <button id="envProd" class="env-btn" type="button">Production</button>
+          </div>
+          <p class="sidebar-hint" id="envHint">Running on <code>localhost:8000</code></p>
+          <input id="apiBaseUrl" type="url" class="sidebar-input" style="display:none" placeholder="https://study-bot-bs6x.onrender.com" />
+        </div>
+        <div class="sidebar-section">
+          <p class="sidebar-label">Session ID</p>
+          <input id="sessionId" type="text" class="sidebar-input" placeholder="e.g. student123" />
+          <p class="sidebar-hint">Keeps your chat history separate</p>
+        </div>
+        <div class="sidebar-actions">
+          <button id="historyBtn" class="action-btn history" type="button">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>
+            View History
+          </button>
+          <button id="clearBtn" class="action-btn danger" type="button">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+            Clear Chat
+          </button>
+        </div>
+        <div class="sidebar-footer">
+          <span class="footer-badge">LLaMA 3.3 · 70B</span>
+          <span class="footer-badge">Groq</span>
+          <span class="footer-badge">MongoDB</span>
+        </div>
+      </aside>
+      <div class="chat-area">
+        <header class="chat-header">
+          <div class="header-left">
+            <div class="header-avatar">📚</div>
+            <div>
+              <p class="header-name">Study Bot</p>
+              <p class="header-status"><span class="status-dot"></span>Online · Ready to help</p>
+            </div>
+          </div>
+          <div class="header-subjects">
+            <span class="subject-tag">Maths</span>
+            <span class="subject-tag">Science</span>
+            <span class="subject-tag">History</span>
+            <span class="subject-tag">Programming</span>
+            <span class="subject-tag">English</span>
+          </div>
+        </header>
+        <div class="history-panel" id="historyPanel" style="display:none">
+          <div class="history-panel-header">
+            <p>Chat History</p>
+            <button id="closeHistoryBtn" type="button">✕</button>
+          </div>
+          <div class="history-list" id="historyList">Loading…</div>
+        </div>
+        <div class="messages" id="messages">
+          <div class="message bot">
+            <div class="avatar">📚</div>
+            <div class="bubble-wrap">
+              <div class="bubble">
+                👋 Hi! I'm <strong>Study Bot</strong>, your AI-powered study assistant.<br><br>
+                I can help you with <strong>Maths, Science, History, English, Programming</strong> and more. Ask me anything!
+              </div>
+              <span class="timestamp">Just now</span>
+            </div>
+          </div>
+        </div>
+        <div class="chat-input-area">
+          <div class="input-wrap">
+            <textarea id="question" class="chat-input" rows="1" placeholder="Ask a study question… (Enter to send, Shift+Enter for new line)"></textarea>
+            <button id="askBtn" type="button" class="send-btn" title="Send">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
+              </svg>
+            </button>
+          </div>
+          <p class="input-hint">Powered by LLaMA 3.3 70B · Groq · MongoDB Atlas</p>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
